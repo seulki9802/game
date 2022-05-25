@@ -15,12 +15,18 @@
     margin-right: 5vw; */
   }
 
-  #smile {
+  #game {
     background-color: #eee;
     display: block;
 
     width: 100vw;
     height: 65vw;
+  }
+
+  #score {
+    background-color: aliceblue;
+    width: 100vw;
+    height: 20vh;
   }
 
 
