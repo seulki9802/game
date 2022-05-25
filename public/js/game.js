@@ -1,11 +1,10 @@
-var canvas = document.getElementById("smile");
+var canvas = document.getElementById("game");
 var ctx = canvas.getContext("2d");
 
 const { width, height } = canvas.getBoundingClientRect();
 canvas.width = width;
 canvas.height = height;
 
-console.log(width, height)
 var mainFoodNumber = 10;
 var mainFoodSize = width * 40 / 480;
 var mainFoods = [];
@@ -36,7 +35,7 @@ var start = 0;
 var over = 0;
 var stage = 0;
 
-var score = 0;
+var score = [0, 0]; //total_eatMainFoodNumber, total_eatJunkFoodNumber
 
 document.addEventListener("keydown", keyDownHandler, false);
 
@@ -96,10 +95,11 @@ function keyDownHandler(e) {
     if(e.keyCode == 13) {
       if(eatMainFoodNumber == mainFoodNumber || start == 0 || over == 1) {
         if(over == 1) {
+          updateRanking(score)
           stage = 0;
           start = 0;
           over = 0;
-          score = 0;
+          score = [0, 0];
         }else{
           stage += 1;
           start = 1;
@@ -154,7 +154,7 @@ function colli_mainFood() {
     if (is <= mainFoodSize/3 + smileSize && mainFoods[i].status == 1) {
       eat = 1;
       eatMainFoodNumber += 1;
-      score += 1;
+      score[0] += 1;
       mainFoods[i].status = 0;
       eatTime = new Date();
       gameGauge += 30;
@@ -171,14 +171,9 @@ function colli_junckFood() {
     var fy = junckFoods[i].y + junckFoodSize/2;
     var is = Math.sqrt(Math.pow(x - fx, 2) + Math.pow(y - fy, 2));
     if (is <= junckFoodSize/4 + smileSize && junckFoods[i].status == 1) {
-      // eat = 1;
-      // eatMainFoodNumber += 1;
-      // score += 1;
+      score[1] += 1;
       junckFoods[i].status = 0;
-      // eatTime = new Date();
       gameGauge -= 30;
-      // if (gameGauge >= 100) {
-      //   gameGauge = 100;
     }
   }
 }
@@ -249,11 +244,11 @@ function drawGuage() {
   ctx.restore();
 }
 
-function drawScroe() {
+function drawScore() {
   ctx.font = "50px Arial";
   ctx.fillStyle = "white";
   ctx.textAlign = "center";
-  ctx.fillText(score, canvas.width/2, canvas.height/2)
+  ctx.fillText(score[0] + ', ' + score[1], canvas.width/2, canvas.height/2)
 }
 
 function gameStart() {
@@ -296,7 +291,7 @@ function gameComplete() {
   ctx.fillStyle = "white";
   ctx.textAlign = "center";
   ctx.fillText("Next Level", canvas.width/2, canvas.height/2.3)
-  ctx.fillText(score, canvas.width/2, canvas.height/1.9);
+  ctx.fillText(score[0] + ', ' + score[1], canvas.width/2, canvas.height/1.9);
   ctx.fillText("Enter", canvas.width/2, canvas.height/1.6)
 }
 
@@ -308,7 +303,7 @@ function eat_mainFood() {
 
 function gaming() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  drawScroe();
+  drawScore();
   drawMainFood();
   drawJunckFood();
   drawSmile();
