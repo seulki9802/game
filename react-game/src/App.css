@@ -2,18 +2,46 @@
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
 canvas {
-  background-color: #eee;
   display: block;
 
-  width: 100vw;
-  height: 65vw;
+  width: 100%;
+  height: 100%;
+}
+
+.Game {
+  width: 90vw;
+  height: 55vw;
+
+  margin-left: 1vw;
+  margin-right: 1vw;
+
+  border: solid 1vw;
+}
+
+.Intro, .Ranking{
+  width: 90%;
+  height: 100%;
+}
+
+.Intro img {
+  height: calc(15px + 2vmin);
+}
+
+.item-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+th {
+  border: 1px solid white;
+}
+td{
+  padding: 1vw;
 }

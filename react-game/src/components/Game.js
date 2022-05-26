@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 
-function Game() {
+function Game({ setPage, setScore }) {
 
   const canvasRef = useRef();
 
@@ -25,8 +25,7 @@ function Game() {
     var junckFoods = [];
 
     var dx, dy;
-    var start_dx = 3;
-    var start_dy = 3;
+    var basicSpeed = 5;
 
     var rightPressed = false;
     var leftPressed = false;
@@ -38,22 +37,22 @@ function Game() {
     var eatMainFoodNumber = 0;
     var eatTime = new Date();
 
-    var gameGauge = 100;
+    var gameGauge;
     var gameGaugeSize = canvas.height/10;
 
     var start = 0;
     var over = 0;
     var stage = 0;
 
-    var score = [0, 0]; //total_eatMainFoodNumber, total_eatJunkFoodNumber
+    var score = 0;
 
     document.addEventListener("keydown", keyDownHandler, false);
 
     function setup(speed) {
-      dx = start_dx * speed
-      dy = start_dy * speed
+      dx = basicSpeed + speed
+      dy = basicSpeed + speed
       eatMainFoodNumber = 0;
-      gameGauge = 100;
+      gameGauge = 1;
       for (var i = 0; i < mainFoodNumber; i++) {
         var x = getRandomInt(canvas.width * 0.1, canvas.width * 0.9);
         var y = getRandomInt(canvas.height/8, canvas.height * 0.9);
@@ -68,13 +67,11 @@ function Game() {
     }
 
     function stageSet() {
-      if (stage <= 2) {
-        setup(stage);
-      }
       if (stage >= 3) {
         junckFoodNumber = Math.floor(stage * 1.5 );
-        setup(2)
       }
+      setup(stage * 0.8)
+
     }
 
     function keyDownHandler(e) {
@@ -105,10 +102,12 @@ function Game() {
         if(e.keyCode === 13) {
           if(eatMainFoodNumber === mainFoodNumber || start === 0 || over === 1) {
             if(over === 1) {
+              setScore(score);
+              setPage('ranking');
               stage = 0;
               start = 0;
               over = 0;
-              score = [0, 0];
+              score = 0;
             }else{
               stage += 1;
               start = 1;
@@ -163,10 +162,10 @@ function Game() {
         if (is <= mainFoodSize/3 + smileSize && mainFoods[i].status === 1) {
           eat = 1;
           eatMainFoodNumber += 1;
-          score[0] += 1;
           mainFoods[i].status = 0;
           eatTime = new Date();
           gameGauge += 30;
+          score += 1;
           if (gameGauge >= 100) {
             gameGauge = 100;
           }
@@ -180,7 +179,6 @@ function Game() {
         var fy = junckFoods[i].y + junckFoodSize/2;
         var is = Math.sqrt(Math.pow(x - fx, 2) + Math.pow(y - fy, 2));
         if (is <= junckFoodSize/4 + smileSize && junckFoods[i].status === 1) {
-          score[1] += 1;
           junckFoods[i].status = 0;
           gameGauge -= 30;
         }
@@ -192,7 +190,7 @@ function Game() {
         if (mainFoods[i].status === 1) {
           var mainFoodX = mainFoods[i].x;
           var mainFoodY = mainFoods[i].y;
-          ctx.drawImage(document.getElementById("hamberger"),
+          ctx.drawImage(document.getElementById("hamburger"),
                         mainFoodX, mainFoodY, mainFoodSize, mainFoodSize);
           // ctx.beginPath();
           // ctx.arc(mainFoodX + mainFoodSize/2 , mainFoodY + mainFoodSize/2, mainFoodSize/2, 0, Math.PI * 2, true); // head
@@ -257,7 +255,7 @@ function Game() {
       ctx.font = "50px Arial";
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
-      ctx.fillText(score[0] + ', ' + score[1], canvas.width/2, canvas.height/2)
+      ctx.fillText(score, canvas.width/2, canvas.height/2)
     }
 
     function gameStart() {
@@ -285,7 +283,7 @@ function Game() {
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
       ctx.fillText("THE END", canvas.width/2, canvas.height/2.2)
-      ctx.fillText("Restart: Enter", canvas.width/2, canvas.height/1.8)
+      ctx.fillText("enter", canvas.width/2, canvas.height/1.8)
       over = 1;
       junckFoodNumber = 0;
     }
@@ -300,7 +298,7 @@ function Game() {
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
       ctx.fillText("Next Level", canvas.width/2, canvas.height/2.3)
-      ctx.fillText(score[0] + ', ' + score[1], canvas.width/2, canvas.height/1.9);
+      ctx.fillText(score, canvas.width/2, canvas.height/1.9);
       ctx.fillText("Enter", canvas.width/2, canvas.height/1.6)
     }
 
@@ -352,9 +350,7 @@ function Game() {
   }, []);
 
   return (
-    <div className="Game">
-      <canvas ref={ canvasRef }></canvas>
-    </div>
+    <canvas ref={ canvasRef }></canvas>
   );
 }
 
