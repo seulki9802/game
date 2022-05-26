@@ -95,7 +95,7 @@ function keyDownHandler(e) {
     if(e.keyCode == 13) {
       if(eatMainFoodNumber == mainFoodNumber || start == 0 || over == 1) {
         if(over == 1) {
-          updateRanking(score)
+          updateRanking()
           stage = 0;
           start = 0;
           over = 0;
@@ -293,6 +293,20 @@ function gameComplete() {
   ctx.fillText("Next Level", canvas.width/2, canvas.height/2.3)
   ctx.fillText(score[0] + ', ' + score[1], canvas.width/2, canvas.height/1.9);
   ctx.fillText("Enter", canvas.width/2, canvas.height/1.6)
+}
+
+function updateRanking() {
+  console.log('your score: ', score)
+
+  $.ajax({
+    method: 'POST',
+    url: '/update',
+    data: { score : score }
+  }).done(function(result){
+    location.reload();
+  }).fail(function(xhr, textStatus, errorThrown){
+  })
+
 }
 
 function eat_mainFood() {

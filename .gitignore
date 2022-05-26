@@ -1,0 +1,11 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+## 파일 무시
+.env
+## 다음과 같은 확장자는 전체 무시
+*.env
+# *.exe
+# *.zip
+
+## 폴더 무시
+# test/
