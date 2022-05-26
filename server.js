@@ -34,7 +34,7 @@ app.post('/update', function(req, res){
     console.log(req.body.score)
 
     var score = {
-        nick : 'seul',
+        name : req.body.name,
         score : parseInt(req.body.score),
     }
 

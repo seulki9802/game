@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 
-function Game({ setPage, setScore }) {
+function Game({ setPage, setScore, name }) {
 
   const canvasRef = useRef();
 
@@ -52,7 +52,7 @@ function Game({ setPage, setScore }) {
       dx = basicSpeed + speed
       dy = basicSpeed + speed
       eatMainFoodNumber = 0;
-      gameGauge = 1;
+      gameGauge = 100;
       for (var i = 0; i < mainFoodNumber; i++) {
         var x = getRandomInt(canvas.width * 0.1, canvas.width * 0.9);
         var y = getRandomInt(canvas.height/8, canvas.height * 0.9);
@@ -255,7 +255,7 @@ function Game({ setPage, setScore }) {
       ctx.font = "50px Arial";
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
-      ctx.fillText(score, canvas.width/2, canvas.height/2)
+      ctx.fillText(score, canvas.width/2, canvas.height/ 2)
     }
 
     function gameStart() {
@@ -268,8 +268,9 @@ function Game({ setPage, setScore }) {
       ctx.font = "20px Arial";
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
-      ctx.fillText("START", canvas.width/2, canvas.height/2.2)
-      ctx.fillText("Enter", canvas.width/2, canvas.height/1.8)
+      ctx.fillText("Hi, " + name + "!", canvas.width/2, canvas.height/2.2)
+      ctx.fillText("START", canvas.width/2, canvas.height/1.8)
+      ctx.fillText("enter", canvas.width/2, canvas.height/1.65)
     }
 
     function gameOver() {

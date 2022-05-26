@@ -1,8 +1,15 @@
+import $ from 'jquery'
 import hamburger from '../assets/hamburger.tiff'
 import lettuce from '../assets/lettuce.tiff'
 
+function Input({ setPage, setName }) {
 
-function Input({ setPage }) {
+  function start() {
+    var name = $('#name').val()
+    if (!name) return alert('닉네임을 입력하세요.')
+    setName(name)
+    setPage('game')
+  }
 
   return (
     <div className="Intro item-center">
@@ -12,9 +19,12 @@ function Input({ setPage }) {
         하지만 상추<img src={lettuce} alt="lettuce" />는 좋아하지 않아요. 상추<img src={lettuce} alt="lettuce" />를 먹으면 시들시들해질 거예요.
         상추<img src={lettuce} alt="lettuce" />를 피해 햄버거<img src={hamburger} alt="hamburger" />를 많이 먹어보세요!
       </p>
-      <button onClick={ () => setPage('game') }>
-        eat hamburgers!<img src={hamburger} alt="hamburger" />
-      </button>
+      <div>
+        <input id='name'/>
+        <button onClick={ start }>
+          eat hamburgers!<img src={hamburger} alt="hamburger" />
+        </button>
+      </div>
     </div>
 
   );

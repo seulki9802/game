@@ -11,6 +11,7 @@ function App() {
 
   const [score, setScore] = useState(0);
   const [page, setPage] = useState('intro');
+  const [name, setName] = useState('');
 
   return (
     <div className="App">
@@ -20,11 +21,11 @@ function App() {
         <div className='Game item-center'>
           {
             page === 'intro'
-            ? <Intro setPage={ setPage }/>
+            ? <Intro setPage={ setPage } setName={ setName } />
             : page === 'game'
-            ? <Game setPage={ setPage } setScore={ setScore }/>
+            ? <Game setPage={ setPage } setScore={ setScore } name={ name } />
             : page === 'ranking'
-            ? <Ranking setPage={ setPage } score={ score } />
+            ? <Ranking setPage={ setPage } score={ score } name={ name } />
             : null
           }
         </div>
