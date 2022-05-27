@@ -31,8 +31,6 @@ app.get('*', function (req, res) {
 
 app.post('/update', function(req, res){
 
-    console.log(req.body.score)
-
     var score = {
         name : req.body.name,
         score : parseInt(req.body.score),
@@ -40,7 +38,6 @@ app.post('/update', function(req, res){
 
     db.collection('ranking').insertOne(score, function(error){
         if (error) return res.sendStatus(400);
-        console.log('---------UPDATE SUCCESS---------')
         res.sendStatus(200);
     })
 
@@ -49,15 +46,6 @@ app.post('/update', function(req, res){
 app.post('/ranking', function(req, res) {
     db.collection('ranking').find().sort( { "score" : -1 } ).limit(10).toArray(function(error, result){
         if (error) return res.sendStatus(400);
-        console.log(result);
         res.send(result)
     })
 })
-
-
-// app.get('/', function(req, res){
-
-//     db.collection('ranking').find().sort( { "goodScore" : -1 } ).limit(10).toArray(function(error, result){
-//         res.render('index.ejs', { rank : result })
-//     })
-// })

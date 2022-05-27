@@ -45,7 +45,7 @@ function Ranking({ setPage, score, name }) {
           <tr>
             <th colspan="2">
               Ranking<br/>
-              Your score: { score }
+              { name }s' Score: { score }
             </th>
           </tr>
         </thead>
@@ -79,8 +79,8 @@ function Ranking({ setPage, score, name }) {
       </div>
 
       <div className='button-group'>
-        <button onClick={ () => setPage('game') }>game again</button>
-        <button onClick={ () => setPage('intro') }>at home</button>
+        <button onClick={ () => setPage('game') }>Game Again</button>
+        <button onClick={ () => setPage('intro') }>Go Home</button>
       </div>
 
 
