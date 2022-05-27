@@ -1,6 +1,7 @@
 import $ from 'jquery'
-import hamburger from '../assets/hamburger.tiff'
-import lettuce from '../assets/lettuce.tiff'
+import donut from '../assets/donut.png'
+import vegetable from '../assets/vegetable.png'
+
 
 function Input({ setPage, setName }) {
 
@@ -13,16 +14,18 @@ function Input({ setPage, setName }) {
 
   return (
     <div className="Intro item-center">
-      <h2><img src={hamburger} alt="hamburger" /> Eat hamburger! <img src={hamburger} alt="hamburger" /></h2>
+      <h2><img src={donut} alt="donut" /> Eat donut! <img src={donut} alt="donut" /></h2>
+
       <p>
-        우리 아이는 햄버거<img src={hamburger} alt="hamburger" />를 좋아합니다. 햄버거<img src={hamburger} alt="hamburger" />를 많이 먹으세요!
-        하지만 상추<img src={lettuce} alt="lettuce" />는 좋아하지 않아요. 상추<img src={lettuce} alt="lettuce" />를 먹으면 시들시들해질 거예요.
-        상추<img src={lettuce} alt="lettuce" />를 피해 햄버거<img src={hamburger} alt="hamburger" />를 많이 먹어보세요!
+        I Love Donut! <img src={donut} alt="donut" /><br/>
+        I Hate Vegetable! <img src={vegetable} alt="vegetable" /><br/>
+        Eat a lot of donuts!
       </p>
+
       <div>
-        <input id='name'/>
+        <input id='name' placeholder='Input your name'/>
         <button onClick={ start }>
-          eat hamburgers!<img src={hamburger} alt="hamburger" />
+          start!
         </button>
       </div>
     </div>

@@ -78,8 +78,12 @@ function Ranking({ setPage, score, name }) {
 
       </div>
 
-      <button onClick={ () => setPage('game') }>다시하기</button>
-      <button onClick={ () => setPage('intro') }>처음으로</button>
+      <div className='button-group'>
+        <button onClick={ () => setPage('game') }>game again</button>
+        <button onClick={ () => setPage('intro') }>at home</button>
+      </div>
+
+
 
     </div>
   );

@@ -1,21 +1,14 @@
-
 .App-header {
-  background-color: #282c34;
+  background-color: #A8D8EA;
   min-height: 100vh;
   font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-canvas {
-  display: block;
-
-  width: 100%;
-  height: 100%;
+  color: #FFFFD2;
+  text-align: center;
 }
 
 .Game {
-  width: 90vw;
-  height: 55vw;
+  width: 80vw;
+  height: 50vw;
 
   margin-left: 1vw;
   margin-right: 1vw;
@@ -23,13 +16,11 @@ canvas {
   border: solid 1vw;
 }
 
-.Intro, .Ranking{
-  width: 90%;
-  height: 100%;
-}
+canvas {
+  display: block;
 
-.Intro img {
-  height: calc(15px + 2vmin);
+  width: 100%;
+  height: 100%;
 }
 
 .item-center {
@@ -40,8 +31,47 @@ canvas {
 }
 
 th {
-  border: 1px solid white;
+  border: 2px solid #FFFFD2;
 }
 td{
   padding: 1vw;
+}
+
+input {
+  width: 20vw;
+  height: 4vh;
+  text-align: center;
+  font-size: calc(3px + 2vmin);
+  border: 0;
+  border-radius: 5px;
+  outline: none;
+  color: #FCBAD3;
+  background-color: white;
+}
+
+::placeholder {
+  color: #A8D8EA;
+}
+
+button {
+  width: 3px + 2vmin;
+  height: 4.2vh;
+  text-align: center;
+  font-size: calc(3px + 2vmin);
+  border: 0;
+  border-radius: 5px;
+  outline: none;
+  color: #FFFFD2;
+  background-color: #FCBAD3;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+.Intro, .Ranking{
+  width: 90%;
+  height: 100%;
+}
+
+.Intro img {
+  height: calc(15px + 2vmin);
 }
