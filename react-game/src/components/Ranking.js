@@ -45,7 +45,7 @@ function Ranking({ setPage, score, name }) {
           <tr>
             <th colspan="2">
               Ranking<br/>
-              { name }s' Score: { score }
+              { name }'s Score: { score }
             </th>
           </tr>
         </thead>
