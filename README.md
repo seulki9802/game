@@ -1,6 +1,6 @@
 # Eat Donuts!
 **채소를 피해 도넛을 먹어보세요!**
-- Skills: HTML/CSS, JavaScript, React, Node.js, MongoDB
+- Skills: HTML/CSS, JavaScript, React, Node.js(express), MongoDB
 - link: 
 
 ## 프로젝트 개요
