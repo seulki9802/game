@@ -1,6 +1,6 @@
 # 확장자 무시
 *.env
-*.json
+# *.json
 *.DS_Store
 
 # 폴더 무시
