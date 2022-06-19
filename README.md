@@ -12,4 +12,13 @@ Eat Donuts!는 키보드 조작으로 단순하며 속도감있는 게임입니�
 
 게임의 재미와 중독성을 더하기 위해 랭킹 시스템을 도입하였습니다. 이를 위해 단순 HTML과 JavaScript로만 작성되었던 게임에 Node.js(express)와 MongoDB를 추가하였습니다.
 
-## 결과 사진
+## Set
+- `git clone https://github.com/seulki9802/game.git`
+- `cd game`
+- `npm install`
+- `cd react-game`
+- `npm install`
+- `npm run build`
+- `cd ..`
+- game폴더 아래 .env 파일 생성, PORT='원하는 포트 입력' DB_RUL='mongoDB connect URL 입력'
+- `node server.js`
