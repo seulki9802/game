@@ -1,7 +1,7 @@
 # Eat Donuts!
 **채소를 피해 도넛을 먹어보세요!**
 - Skills: HTML/CSS, JavaScript, React, Node.js, MongoDB
-- link: 
+- link: http://seulki.duckdns.org:8888
 
 ## 프로젝트 개요
 **🗣 HTML의 <canvas />를 이용하여 게임을 만들어보자!**
